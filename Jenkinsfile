@@ -23,7 +23,6 @@ pipeline {
         stage('Deploy'){
             steps{
                 echo 'I am at the deployment stage'
-                sh 'git push -u origin master'
             }
         }
     }
