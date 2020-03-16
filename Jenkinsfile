@@ -1,3 +1,4 @@
+// Create PR or whatever
 pipeline {
     agent any
     stages {
@@ -22,8 +23,12 @@ pipeline {
         stage('Deploy'){
             steps{
                 echo 'I am at the deployment stage'
-                sh 'git push -u origin master'
             }
         }
+    }
+   post {
+    success {
+      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})");
+            }
     }
 }
